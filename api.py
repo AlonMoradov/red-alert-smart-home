@@ -70,6 +70,32 @@ def get_bridge_mac_addr():
     return jsonify({"mac_addr": dotenv.get_key(".env", "MAC_ADDR")})
 
 
+@app.route("/load_all_settings_status", methods=["GET"])
+def load_all_settings():
+    if dotenv.get_key(".env", "USERNAME") is None:
+        return jsonify({"message": "Please press the button on the Hue Bridge"})
+    if dotenv.get_key(".env", "IP_ADDR") is None:
+        return jsonify({"message": "Looking for the Hue Bridge IP address"})
+    if dotenv.get_key(".env", "CITY") is None:
+        return jsonify({"message": "Please set the city"})
+    if dotenv.get_key(".env", "MAC_ADDR") is None:
+        return jsonify({"message": "Looking for the Hue Bridge MAC address"})
+    return jsonify({"message": "Done"})
+
+@app.route("/reconnect", methods=["GET"])
+def reset_settings():
+    dotenv.set_key(".env", "USERNAME", None)
+    dotenv.set_key(".env", "IP_ADDR", None)
+    dotenv.set_key(".env", "CITY", None)
+    dotenv.set_key(".env", "MAC_ADDR", None)
+    with open(".env", "w") as f:
+        f.write("")
+    get_bridge_ip_addr()
+    get_bridge_username()
+    get_current_city()
+    get_bridge_mac_addr()
+    return jsonify({"message": "Settings reset"})
+
 if __name__ == "__main__":
     CORS(app)
     app.run(host="0.0.0.0", port=5000, debug=True)

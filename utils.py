@@ -2,6 +2,7 @@ import os
 import platform
 import re
 import subprocess
+from time import sleep
 from typing import Optional
 
 import requests
@@ -181,7 +182,8 @@ def get_hue_bridge_username() -> str:
     Returns:
     str: The username of the Hue Bridge.
     """
-    if USERNAME is None:
+    while USERNAME is None:
+        sleep(1)
         print("Press the button on the Hue Bridge")
         username = requests.post(
             f"http://{get_hue_bridge_ip_addr()}/api",
