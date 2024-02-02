@@ -67,8 +67,10 @@ def get_alert() -> dict:
                 "sec-ch-ua-platform": '"macOS"',
             },
         )
+        if current_alert.status_code != 200:
+            logger.info(f"{current_alert.status_code} {current_alert.reason}")
+            exit(1)
         current_alert.encoding = "utf-8-sig"
-        logger.info(f"{current_alert.status_code} {current_alert.reason}")
         current_alert = current_alert.json()
         current_alert = {
             key: value for key, value in current_alert.items() if key in ["id", "data"]
