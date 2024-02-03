@@ -14,8 +14,6 @@ load_dotenv()
 logger = logging.getLogger(__name__)
 MY_CITY = os.getenv("CITY", "אביגדור")
 
-print(MY_CITY)
-
 
 def write_id_to_log(current_alert_id: int) -> None:
     """Write the current alert id to log file

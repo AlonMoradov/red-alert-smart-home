@@ -82,6 +82,7 @@ def load_all_settings():
         return jsonify({"message": "Looking for the Hue Bridge MAC address"})
     return jsonify({"message": "Done"})
 
+
 @app.route("/reconnect", methods=["GET"])
 def reset_settings():
     dotenv.set_key(".env", "USERNAME", None)
@@ -96,6 +97,7 @@ def reset_settings():
     get_bridge_mac_addr()
     return jsonify({"message": "Settings reset"})
 
+
 if __name__ == "__main__":
     CORS(app)
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5555, debug=True)

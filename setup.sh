@@ -15,10 +15,10 @@ pip install -r $HOME/red_alert_hue_lights/requirements.txt
 (crontab -l 2>/dev/null; echo "@reboot nohup $HOME/red_alert_hue_lights/red_alert.sh > $HOME/red_alert.log 2>&1 &") | crontab -
 (crontab -l 2>/dev/null; echo "@reboot nohup $HOME/red_alert_hue_lights/red_alert_watchdog.sh > $HOME/red_alert_watchdog.log 2>&1 &") | crontab -
 (crontab -l 2>/dev/null; echo "@reboot nohup $HOME/red_alert_hue_lights/venv/bin/python3 $HOME/red_alert_hue_lights/api.py > $HOME/api.log 2>&1 &") | crontab -
-(crontab -l 2>/dev/null; echo "@reboot sudo nohup $HOME/red_alert_hue_lights/venv/bin/python3 -m http.server 80 --directory $HOME/build/web > $HOME/http_server.log 2>&1 &") | crontab -
+(crontab -l 2>/dev/null; echo "@reboot sudo nohup $HOME/red_alert_hue_lights/venv/bin/python3 -m http.server 80 --directory $HOME/red_alert_hue_lights/web > $HOME/http_server.log 2>&1 &") | crontab -
 
 
 nohup $HOME/red_alert_hue_lights/red_alert.sh > $HOME/red_alert.log 2>&1 &
 nohup $HOME/red_alert_hue_lights/red_alert_watchdog.sh > $HOME/red_alert_watchdog.log 2>&1 &
 nohup $HOME/red_alert_hue_lights/venv/bin/python3 $HOME/red_alert_hue_lights/api.py > $HOME/api.log 2>&1 &
-sudo nohup $HOME/red_alert_hue_lights/venv/bin/python3 -m http.server 80 --directory $HOME/build/web > $HOME/http_server.log 2>&1 &
+sudo nohup $HOME/red_alert_hue_lights/venv/bin/python3 -m http.server 80 --directory $HOME/red_alert_hue_lights/web > $HOME/http_server.log 2>&1 &
