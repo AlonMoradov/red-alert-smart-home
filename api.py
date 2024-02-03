@@ -100,4 +100,4 @@ def reset_settings():
 
 if __name__ == "__main__":
     CORS(app)
-    app.run(host="0.0.0.0", port=5555, debug=True)
+    app.run(host="redalert.local", port=5555, debug=True)
