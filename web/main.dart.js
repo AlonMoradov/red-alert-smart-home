@@ -75540,7 +75540,7 @@ A.MM.prototype={
 tv(){var s=0,r=A.T(t.z),q=this,p
 var $async$tv=A.U(function(a,b){if(a===1)return A.Q(b,r)
 while(true)switch(s){case 0:s=2
-return A.W(A.RB(A.dJ("http://127.0.0.1:5555/get_current_city")),$async$tv)
+return A.W(A.RB(A.dJ("http://redalert.local:5555/get_current_city")),$async$tv)
 case 2:p=b
 q.ak(new A.aaP(q,B.b8.mh(A.Ch(A.C4(p.e).c.a.h(0,"charset")).dU(p.w),null)))
 return A.R(null,r)}})
@@ -75548,7 +75548,7 @@ return A.S($async$tv,r)},
 tC(){var s=0,r=A.T(t.z),q=this,p
 var $async$tC=A.U(function(a,b){if(a===1)return A.Q(b,r)
 while(true)switch(s){case 0:s=2
-return A.W(A.RB(A.dJ("http://127.0.0.1:5555/get_hue_bridge_username")),$async$tC)
+return A.W(A.RB(A.dJ("http://redalert.local:5555/get_hue_bridge_username")),$async$tC)
 case 2:p=b
 q.ak(new A.aaS(q,B.b8.mh(A.Ch(A.C4(p.e).c.a.h(0,"charset")).dU(p.w),null)))
 return A.R(null,r)}})
@@ -75556,7 +75556,7 @@ return A.S($async$tC,r)},
 ty(){var s=0,r=A.T(t.z),q=this,p
 var $async$ty=A.U(function(a,b){if(a===1)return A.Q(b,r)
 while(true)switch(s){case 0:s=2
-return A.W(A.RB(A.dJ("http://127.0.0.1:5555/get_hue_bridge_mac_addr")),$async$ty)
+return A.W(A.RB(A.dJ("http://redalert.local:5555/get_hue_bridge_mac_addr")),$async$ty)
 case 2:p=b
 q.ak(new A.aaR(q,B.b8.mh(A.Ch(A.C4(p.e).c.a.h(0,"charset")).dU(p.w),null)))
 return A.R(null,r)}})
@@ -75564,7 +75564,7 @@ return A.S($async$ty,r)},
 tx(){var s=0,r=A.T(t.z),q=this,p
 var $async$tx=A.U(function(a,b){if(a===1)return A.Q(b,r)
 while(true)switch(s){case 0:s=2
-return A.W(A.RB(A.dJ("http://127.0.0.1:5555/get_hue_bridge_ip_addr")),$async$tx)
+return A.W(A.RB(A.dJ("http://redalert.local:5555/get_hue_bridge_ip_addr")),$async$tx)
 case 2:p=b
 q.ak(new A.aaQ(q,B.b8.mh(A.Ch(A.C4(p.e).c.a.h(0,"charset")).dU(p.w),null)))
 return A.R(null,r)}})
@@ -75572,7 +75572,7 @@ return A.S($async$tx,r)},
 tK(a){return this.SH(a)},
 SH(a){var s=0,r=A.T(t.z),q=this,p,o,n,m
 var $async$tK=A.U(function(b,c){if(b===1)return A.Q(c,r)
-while(true)switch(s){case 0:o=A.dJ("http://127.0.0.1:5555/set_current_city")
+while(true)switch(s){case 0:o=A.dJ("http://redalert.local:5555/set_current_city")
 n=t.N
 m=B.b8.OF(A.an(["city",a],n,n),null)
 n=A.an(["Content-Type","application/json"],n,n)
@@ -75585,7 +75585,7 @@ return A.S($async$tK,r)},
 tu(){var s=0,r=A.T(t.z),q=this,p
 var $async$tu=A.U(function(a,b){if(a===1)return A.Q(b,r)
 while(true)switch(s){case 0:s=2
-return A.W(A.RB(A.dJ("http://127.0.0.1:5555/get_cities_list")),$async$tu)
+return A.W(A.RB(A.dJ("http://redalert.local:5555/get_cities_list")),$async$tu)
 case 2:p=b
 q.ak(new A.aaO(q,B.b8.mh(A.Ch(A.C4(p.e).c.a.h(0,"charset")).dU(p.w),null)))
 return A.R(null,r)}})
