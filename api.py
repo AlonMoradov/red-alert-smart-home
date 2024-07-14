@@ -7,34 +7,40 @@ from utils import add_to_env_file, get_hue_bridge_ip_addr, get_hue_bridge_userna
 
 app = Flask(__name__)
 
+@app.route("/get_recent_alerts", methods=["POST"])
+def get_recent_alerts():
+    """
+    Get recent alerts from the Oref API
+    
+    mode 1 = alerts in the last 24 hours
+    mode 2 = alerts in the last 7 days
+    mode 3 = alerts in the last 30 days
+    """
+    mode = request.json.get("mode", 1)
+    current_city = dotenv.get_key(".env", "CITY") or "אביגדור"
+
+    params = {
+        'lang': 'he',
+        'mode': str(mode) if mode in [1, 2, 3] else '1',
+        'city_0': current_city,
+    }
+
+    response = requests.get(
+        'https://alerts-history.oref.org.il//Shared/Ajax/GetAlarmsHistory.aspx',
+        params=params,
+    )
+    
+    match response.status_code:
+        case 200:
+            return response.json()
+        case _:
+            return jsonify({"error": "Failed to get recent alerts"})
 
 @app.route("/get_cities_list", methods=["GET"])
 def get_cities_list():
-    headers = {
-        "Accept": "*/*",
-        "Accept-Language": "he-IL,he;q=0.9,en-US;q=0.8,en;q=0.7",
-        "Cache-Control": "no-cache",
-        "Connection": "keep-alive",
-        "Pragma": "no-cache",
-        "Referer": "https://www.oref.org.il/12481-he/Pakar.aspx",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-origin",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "X-Requested-With": "XMLHttpRequest",
-        "sec-ch-ua": '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
-        "sec-ch-ua-mobile": "?0",
-        "sec-ch-ua-platform": '"macOS"',
-    }
-
-    params = (("lang", "he"),)
-
-    response = requests.get(
-        "https://www.oref.org.il/Shared/Ajax/GetDistricts.aspx",
-        headers=headers,
-        params=params,
-    )
-    return jsonify(response.json())
+    with open('/home/ubuntu/red_alert_hue_lights/cities.json', 'r') as f:
+        cities = f.read()
+    return cities
 
 
 @app.route("/get_current_city", methods=["GET"])

@@ -72,7 +72,9 @@ def red_alert() -> None:
     def action(light):
         for _ in range(3):
             set_state(light, {"on": True, "xy": (0.675, 0.322), "bri": 254})
+            requests.get("http://wled.local/win&A=0&R=255&G=0&B=0")
             sleep(1)
+            requests.get("http://wled.local/win&A=255&R=255&G=0&B=0")
             set_state(light, {"on": True, "xy": (0.3227, 0.3290), "bri": 254})
             sleep(1)
 
