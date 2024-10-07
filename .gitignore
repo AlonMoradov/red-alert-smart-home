@@ -153,3 +153,5 @@ install_manifest.txt
 .pylance/
 
 # End of Python gitignore template
+
+nohup.out
